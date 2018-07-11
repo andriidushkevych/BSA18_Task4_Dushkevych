@@ -7,7 +7,7 @@ namespace DAL.Model
     public class Flight : Entity
     {
 
-        public Flight(int number, string origin, DateTime departTimeAssigned, DateTime departTimeActual, string destination, DateTime arrivalTimeAssigned, DateTime arrivalTimeActual, List<Ticket> tickets, Flight flight, Flight flight1)
+        public Flight(int number, string origin, DateTime departTimeAssigned, DateTime departTimeActual, string destination, DateTime arrivalTimeAssigned, DateTime arrivalTimeActual, List<Ticket> tickets)
         {
             Id = Guid.NewGuid();
             Number = number;

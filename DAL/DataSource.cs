@@ -59,11 +59,27 @@ namespace DAL
             new Ticket(110.1m, 1233)
         };
 
+        private static List<Departure> departures = new List<Departure>()
+        {
+            new Departure(2408, new DateTime(2018, 07, 15, 16, 34, 00), new DateTime(2018, 07, 15, 16, 35, 00), crews[0], planes[0]),
+            new Departure(1233, new DateTime(2018, 07, 16, 20, 05, 00), new DateTime(2018, 07, 16, 20, 05, 00), crews[1], planes[1]),
+            new Departure(3501, new DateTime(2018, 07, 15, 17, 00, 00), new DateTime(2018, 07, 15, 17, 30, 00), crews[2], planes[2])
+        };
+
         private static List<Flight> flights = new List<Flight>()
         {
-            new Flight(2408, "Toronto-YYZ", new DateTime(2018, 07, 15, 16, 34, 00), new DateTime(2018, 07, 15, 16, 35, 00), "Paris-CDG", new DateTime(2018, 07, 16, 08, 24, 00), new DateTime(2018, 07, 16, 08, 24, 00), new List<Ticket>(){ tickets[0], tickets[3], tickets[6] }),
-            new Flight(1233, "New York-JFK", new DateTime(2018, 07, 15, 16, 34, 00), new DateTime(2018, 07, 15, 16, 35, 00), "Miami-MIA", new DateTime(2018, 07, 16, 08, 24, 00), new DateTime(2018, 07, 16, 08, 24, 00), new List<Ticket>(){ tickets[2], tickets[5], tickets[8] }),
-            new Flight(3501, "Paris-CDG", new DateTime(2018, 07, 15, 16, 34, 00), new DateTime(2018, 07, 15, 16, 35, 00), "Amsterdam-AMS", new DateTime(2018, 07, 16, 08, 24, 00), new DateTime(2018, 07, 16, 08, 24, 00), new List<Ticket>(){ tickets[1], tickets[4], tickets[7] })
+            new Flight(2408, "Toronto-YYZ", departures.Where(d=>d.FlightNumber == 2408).Single().DepartTimeAssigned, departures.Where(d=>d.FlightNumber == 2408).Single().DepartTimeActual, "Paris-CDG", new DateTime(2018, 07, 16, 08, 24, 00), new DateTime(2018, 07, 16, 08, 55, 00), tickets.Where(t => t.FlightNumber == 2408).ToList()),
+            new Flight(1233, "New York-JFK", departures.Where(d=>d.FlightNumber == 1233).Single().DepartTimeAssigned, departures.Where(d=>d.FlightNumber == 1233).Single().DepartTimeActual, "Miami-MIA", new DateTime(2018, 07, 16, 23, 15, 00), new DateTime(2018, 07, 16, 23, 15, 00), new List<Ticket>(){ tickets[2], tickets[5], tickets[8] }),
+            new Flight(3501, "Paris-CDG", departures.Where(d=>d.FlightNumber == 3501).Single().DepartTimeAssigned, departures.Where(d=>d.FlightNumber == 3501).Single().DepartTimeActual, "Amsterdam-AMS", new DateTime(2018, 07, 15, 19, 20, 00), new DateTime(2018, 07, 15, 19, 20, 00), new List<Ticket>(){ tickets[1], tickets[4], tickets[7] })
         };
+
+        public List<Flight> GetFlights() { return flights; }
+        public List<Departure> GetDepartures() { return departures; }
+        public List<Ticket> GetTickets() { return tickets; }
+        public List<Crew> GetCrews() { return crews; }
+        public List<Pilot> GetPilots() { return pilots; }
+        public List<Stewardess> GetStewardesses() { return stewardesses; }
+        public List<Plane> GetPlanes() { return planes; }
+        public List<PlaneType> GetPlaneTypes() { return planeTypes; }
     }
 }
