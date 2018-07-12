@@ -8,6 +8,20 @@ namespace DAL
 {
     public class DataSource
     {
+        public Dictionary<Type, IEnumerable<Entity>> Data { get; set; }
+
+        public DataSource()
+        {
+            Data.Add(typeof(Departure), departures);
+            Data.Add(typeof(Flight), flights);
+            Data.Add(typeof(Ticket), tickets);
+            Data.Add(typeof(Crew), crews);
+            Data.Add(typeof(Pilot), pilots);
+            Data.Add(typeof(Stewardess), stewardesses);
+            Data.Add(typeof(Plane), planes);
+            Data.Add(typeof(PlaneType), planeTypes);
+        }
+
         private static List<Pilot> pilots = new List<Pilot>()
         {
             new Pilot("Andrew", "Stones", 3),

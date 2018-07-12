@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository
     {
-        List<TEntity> FetchAll();
-        void Add(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
+        List<Entity> FetchAll();
+        void Create(Entity entity);
+        void Update(Guid entityId, Entity newEntity);
+        void Delete(Guid id);
         void Save();
     }
 }
