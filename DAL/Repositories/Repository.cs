@@ -4,22 +4,32 @@ using System.Text;
 using System.Linq;
 using DAL.Model;
 
+
 namespace DAL.Repositories
 {
-    public class Repository : IRepository
+    public class Repository<T> : IRepository<T> where T :Entity
     {
         DataSource ds;
-        public List<Entity> data;
-
+        public List<T> data;
+        
         public Repository()
         {
             ds = new DataSource();
-            data = (List<Entity>)ds.Data[typeof(Entity)];
+            data = (List<T>)ds.Data[typeof(T)];
         }
 
-        public void Create(Entity entity)
+        public void Create(T entity)
         {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
             data.Add(entity);
+        }
+
+        public T Get(Guid id)
+        {
+            return data.Where(d => d.Id == id).First();
         }
 
         public void Delete(Guid id)
@@ -27,17 +37,12 @@ namespace DAL.Repositories
             data.Remove(data.Where(d => d.Id == id).First());
         }
 
-        public List<Entity> FetchAll()
+        public List<T> FetchAll()
         {
             return data;
         }
 
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void Update(Guid entityId, Entity newEntity)
+        public virtual void Update(Guid entityId, T newEntity)
         {
             throw new NotImplementedException();
         }

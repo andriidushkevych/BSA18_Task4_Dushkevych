@@ -10,7 +10,6 @@ namespace DAL.Model
 
         public Pilot(string fName, string lName, int exp)
         {
-            Id = Guid.NewGuid();
             FirstName = fName;
             LastName = lName;
             FullYearsExperience = exp;

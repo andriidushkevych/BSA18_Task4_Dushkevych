@@ -6,11 +6,11 @@ using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public class PilotRepository : Repository
+    public class PilotRepository : Repository<Pilot>
     {        
-        public virtual void Update(Guid id, Pilot entity)
+        public override void Update(Guid id, Pilot entity)
         {
-            Pilot pilotToUpdate = (Pilot)data.Where(p => p.Id.Equals(id)).First();
+            Pilot pilotToUpdate = data.Where(p => p.Id.Equals(id)).First();
             pilotToUpdate.FirstName = entity.FirstName;
             pilotToUpdate.LastName = entity.LastName;
             pilotToUpdate.FullYearsExperience = entity.FullYearsExperience;

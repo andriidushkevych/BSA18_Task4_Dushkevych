@@ -6,11 +6,11 @@ using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public class CrewRepository : Repository
+    public class CrewRepository : Repository<Crew>
     {
-        public virtual void Update(Guid id, Crew entity)
+        public override void Update(Guid id, Crew entity)
         {
-            Crew crewToUpdate = (Crew)data.Where(t => t.Id.Equals(id)).First();
+            Crew crewToUpdate = data.Where(t => t.Id.Equals(id)).First();
             crewToUpdate.Pilot = entity.Pilot;
             crewToUpdate.Stewardesses = entity.Stewardesses;
         }

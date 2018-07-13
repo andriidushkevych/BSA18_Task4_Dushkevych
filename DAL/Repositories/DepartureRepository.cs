@@ -6,11 +6,11 @@ using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public class DepartureRepository : Repository
+    public class DepartureRepository : Repository<Departure>
     {
-        public virtual void Update(Guid id, Departure entity)
+        public override void Update(Guid id, Departure entity)
         {
-            Departure departureToUpdate = (Departure)data.Where(t => t.Id.Equals(id)).First();
+            Departure departureToUpdate = data.Where(t => t.Id.Equals(id)).First();
             departureToUpdate.FlightNumber = entity.FlightNumber;
             departureToUpdate.Plane = entity.Plane;
             departureToUpdate.DepartTimeAssigned = entity.DepartTimeAssigned;

@@ -9,7 +9,6 @@ namespace DAL.Model
 
         public Flight(int number, string origin, DateTime departTimeAssigned, DateTime departTimeActual, string destination, DateTime arrivalTimeAssigned, DateTime arrivalTimeActual, List<Ticket> tickets)
         {
-            Id = Guid.NewGuid();
             Number = number;
             Origin = origin;
             DepartTimeAssigned = departTimeAssigned;

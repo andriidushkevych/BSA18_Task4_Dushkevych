@@ -12,6 +12,7 @@ namespace DAL
 
         public DataSource()
         {
+            Data = new Dictionary<Type, IEnumerable<Entity>>();
             Data.Add(typeof(Departure), departures);
             Data.Add(typeof(Flight), flights);
             Data.Add(typeof(Ticket), tickets);

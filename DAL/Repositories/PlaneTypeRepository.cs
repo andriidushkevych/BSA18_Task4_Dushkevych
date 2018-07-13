@@ -6,11 +6,11 @@ using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public class PlaneTypeRepository : Repository
+    public class PlaneTypeRepository : Repository<PlaneType>
     {
-        public virtual void Update(Guid id, PlaneType entity)
+        public override void Update(Guid id, PlaneType entity)
         {
-            PlaneType planeTypeToUpdate = (PlaneType)data.Where(p => p.Id.Equals(id)).First();
+            PlaneType planeTypeToUpdate = data.Where(p => p.Id.Equals(id)).First();
             planeTypeToUpdate.Model = entity.Model;
             planeTypeToUpdate.Capacity = entity.Capacity;
             planeTypeToUpdate.CargoKg = entity.CargoKg;

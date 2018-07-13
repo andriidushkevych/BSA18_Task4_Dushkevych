@@ -6,9 +6,9 @@ using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public class StewardessRepository : Repository
+    public class StewardessRepository : Repository<Stewardess>
     {
-        public virtual void Update(Guid id, Stewardess entity)
+        public override void Update(Guid id, Stewardess entity)
         {
             Stewardess stewardessToUpdate = (Stewardess)data.Where(s => s.Id.Equals(id)).First();
             stewardessToUpdate.FirstName = entity.FirstName;

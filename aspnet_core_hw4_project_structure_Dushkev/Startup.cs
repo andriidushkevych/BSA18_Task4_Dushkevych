@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using AutoMapper;
 using DAL.Model;
-using Shared.DTOs;
+using DAL.Repositories;
 
 
 namespace aspnet_core_hw4_project_structure_Dushkev
@@ -28,8 +28,7 @@ namespace aspnet_core_hw4_project_structure_Dushkev
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            var mapper = MapperConfiguration().CreateMapper();
-            services.AddScoped(_ => mapper);
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,37 +40,6 @@ namespace aspnet_core_hw4_project_structure_Dushkev
             }
 
             app.UseMvc();
-        }
-
-        public MapperConfiguration MapperConfiguration()
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<PlaneType, PlaneTypeDTO>();
-                cfg.CreateMap<PlaneTypeDTO, PlaneType>();
-
-                cfg.CreateMap<Plane, PlaneDTO>();
-                cfg.CreateMap<PlaneDTO, Plane>();
-
-                cfg.CreateMap<Stewardess, StewardessDTO>();
-                cfg.CreateMap<StewardessDTO, Stewardess>();
-
-                cfg.CreateMap<Pilot, PilotDTO>();
-                cfg.CreateMap<PilotDTO, Pilot>();
-
-                cfg.CreateMap<Crew, CrewDTO>();
-                cfg.CreateMap<CrewDTO, Crew>();
-
-                cfg.CreateMap<Ticket, TicketDTO>();
-                cfg.CreateMap<TicketDTO, Ticket>();
-
-                cfg.CreateMap<Flight, FlightDTO>();
-                cfg.CreateMap<FlightDTO, Flight>();
-
-                cfg.CreateMap<Departure, DepartureDTO>();
-                cfg.CreateMap<DepartureDTO, Departure>();
-            });
-            return config;
-        }
+        }        
     }
 }

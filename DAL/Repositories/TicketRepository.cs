@@ -6,11 +6,11 @@ using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public class TicketRepository : Repository
+    public class TicketRepository : Repository<Ticket>
     {
-        public void Update(Guid id, Ticket entity)
+        public override void Update(Guid id, Ticket entity)
         {
-            Ticket ticketToUpdate = (Ticket)data.Where(t => t.Id.Equals(id)).First();
+            Ticket ticketToUpdate = data.Where(t => t.Id.Equals(id)).First();
             ticketToUpdate.FlightNumber = entity.FlightNumber;
             ticketToUpdate.Price = entity.Price;
         }

@@ -5,12 +5,12 @@ using DAL.Model;
 
 namespace DAL.Repositories
 {
-    public interface IRepository
+    public interface IRepository<T> where T : Entity
     {
-        List<Entity> FetchAll();
-        void Create(Entity entity);
-        void Update(Guid entityId, Entity newEntity);
+        List<T> FetchAll();
+        T Get(Guid id);
+        void Create(T entity);
+        void Update(Guid entityId, T newEntity);
         void Delete(Guid id);
-        void Save();
     }
 }

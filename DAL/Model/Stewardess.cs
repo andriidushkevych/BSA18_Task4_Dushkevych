@@ -8,7 +8,6 @@ namespace DAL.Model
     {
         public Stewardess(string fName, string lName)
         {
-            Id = Guid.NewGuid();
             FirstName = fName;
             LastName = lName;
         }
