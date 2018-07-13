@@ -10,7 +10,7 @@ namespace DAL.Repositories
     {
         public override void Update(Guid id, PlaneType entity)
         {
-            PlaneType planeTypeToUpdate = data.Where(p => p.Id.Equals(id)).First();
+            PlaneType planeTypeToUpdate = Get(id);
             planeTypeToUpdate.Model = entity.Model;
             planeTypeToUpdate.Capacity = entity.Capacity;
             planeTypeToUpdate.CargoKg = entity.CargoKg;

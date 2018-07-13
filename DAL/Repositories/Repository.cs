@@ -24,17 +24,22 @@ namespace DAL.Repositories
             {
                 throw new ArgumentNullException("entity");
             }
+            entity.Id = Guid.NewGuid();
             data.Add(entity);
         }
 
         public T Get(Guid id)
         {
-            return data.Where(d => d.Id == id).First();
+            return data.Find(d => d.Id == id);
         }
 
         public void Delete(Guid id)
         {
-            data.Remove(data.Where(d => d.Id == id).First());
+            T itemToDelete = Get(id);
+            if (itemToDelete != null)
+            {
+                data.Remove(itemToDelete);
+            }
         }
 
         public List<T> FetchAll()

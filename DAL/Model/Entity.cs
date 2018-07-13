@@ -11,6 +11,6 @@ namespace DAL.Model
         {
             Id = Guid.NewGuid();
         }
-        public Guid Id { get; protected set; }
+        public Guid Id { get; set; }
     }
 }
