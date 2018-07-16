@@ -8,11 +8,11 @@ namespace DAL.Model
     {
         public int FullYearsExperience { get; set; }
 
-        public Pilot(string fName, string lName, int exp)
-        {
-            FirstName = fName;
-            LastName = lName;
-            FullYearsExperience = exp;
-        }
+        //public Pilot(string fName, string lName, int exp)
+        //{
+        //    FirstName = fName;
+        //    LastName = lName;
+        //    FullYearsExperience = exp;
+        //}
     }
 }

@@ -8,9 +8,10 @@ namespace DAL.Repositories
     public interface IRepository<T> where T : Entity
     {
         List<T> FetchAll();
-        T Get(Guid id);
+        T GetById(Guid id);
         void Create(T entity);
-        void Update(Guid entityId, T newEntity);
+        void Update(T entity);
         void Delete(Guid id);
+        void SaveChanges();
     }
 }

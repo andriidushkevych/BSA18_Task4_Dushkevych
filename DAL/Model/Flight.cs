@@ -6,19 +6,6 @@ namespace DAL.Model
 {
     public class Flight : Entity
     {
-
-        public Flight(int number, string origin, DateTime departTimeAssigned, DateTime departTimeActual, string destination, DateTime arrivalTimeAssigned, DateTime arrivalTimeActual, List<Ticket> tickets)
-        {
-            Number = number;
-            Origin = origin;
-            DepartTimeAssigned = departTimeAssigned;
-            DepartTimeActual = departTimeActual;
-            Destination = destination;
-            ArrivalTimeAssigned = arrivalTimeAssigned;
-            ArrivalTimeActual = arrivalTimeActual;
-            Tickets = tickets;
-        }
-
         public int Number { get; set; }
         public string Origin { get; set; }
         public DateTime DepartTimeAssigned { get; set; }

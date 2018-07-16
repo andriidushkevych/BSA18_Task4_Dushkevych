@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DAL.Repositories;
 using DAL.Model;
+using Shared.DTOs;
+using BLL.Services;
 
 namespace aspnet_core_hw4_project_structure_Dushkev.Controllers
 {
@@ -12,38 +14,38 @@ namespace aspnet_core_hw4_project_structure_Dushkev.Controllers
     [Route("api/[controller]")]
     public class TicketsController : Controller
     {
-        private IRepository<Ticket> repository;
+        private IService<TicketDTO> service;
 
-        public TicketsController(IRepository<Ticket> ticketsRepo)
+        public TicketsController(IService<TicketDTO> ticketService)
         {
-            this.repository = ticketsRepo;
+            service = ticketService;
         }
         //GET: api/tickets/
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(repository.FetchAll());
+            return Json(service.FetchAll());
         }
         //GET: api/tickets/:id
         [HttpGet("{id})")]
         public IActionResult GetById(Guid id)
         {
-            return Json(repository.Get(id));
+            return Json(service.GetById(id));
         }
 
         //POST: api/tickets/
         [HttpPost]
-        public IActionResult Create([FromBody] Ticket ticket)
+        public IActionResult Create([FromBody] TicketDTO ticket)
         {
-            repository.Create(ticket);
+            service.Create(ticket);
             return Ok();
         }
 
-        //PUT: api/tickets/:id
-        [HttpPut("{id})")]
-        public IActionResult Update(Guid id, [FromBody] Ticket ticket)
+        //PUT: api/tickets/
+        [HttpPut]
+        public IActionResult Update([FromBody] TicketDTO ticket)
         {
-            repository.Update(id, ticket);
+            service.Update(ticket);
             return Ok();
         }
 
@@ -51,7 +53,7 @@ namespace aspnet_core_hw4_project_structure_Dushkev.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
-            repository.Delete(id);
+            service.Delete(id);
             return Ok();
         }
     }

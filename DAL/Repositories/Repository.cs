@@ -3,53 +3,53 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using DAL.Model;
+using Microsoft.EntityFrameworkCore;
+using DAL.DB;
 
 
 namespace DAL.Repositories
 {
     public class Repository<T> : IRepository<T> where T :Entity
     {
-        DataSource ds;
-        public List<T> data;
-        
-        public Repository()
+        private readonly AirportContext _ctx;
+        private DbSet<T> _dbSet;
+
+        public Repository(AirportContext ctx)
         {
-            ds = new DataSource();
-            data = (List<T>)ds.Data[typeof(T)];
+            _ctx = ctx;
+            _dbSet = _ctx.Set<T>();
         }
 
         public void Create(T entity)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
-            entity.Id = Guid.NewGuid();
-            data.Add(entity);
-        }
-
-        public T Get(Guid id)
-        {
-            return data.Find(d => d.Id == id);
+            _dbSet.Add(entity);
         }
 
         public void Delete(Guid id)
         {
-            T itemToDelete = Get(id);
-            if (itemToDelete != null)
-            {
-                data.Remove(itemToDelete);
-            }
+            T existing = GetById(id);
+            if (existing != null) _dbSet.Remove(existing);
         }
 
         public List<T> FetchAll()
         {
-            return data;
+            return _dbSet.ToList();
         }
 
-        public virtual void Update(Guid entityId, T newEntity)
+        public T GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _dbSet.SingleOrDefault(entity => entity.Id == id);
+        }
+
+        public void Update(T entity)
+        {
+            _ctx.Entry(entity).State = EntityState.Modified;
+            _dbSet.Attach(entity);
+        }
+
+        public void SaveChanges()
+        {
+            _ctx.SaveChanges();
         }
     }
 }

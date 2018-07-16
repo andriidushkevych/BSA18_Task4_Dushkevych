@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnet_core_hw4_project_str
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{DDBEB4F3-F90C-474A-855E-0EC6CE082B9A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{68756260-A443-46DC-82C9-BB988BD8BBFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{567D4916-3C6A-4CC8-B52F-751D7101B568}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DDBEB4F3-F90C-474A-855E-0EC6CE082B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDBEB4F3-F90C-474A-855E-0EC6CE082B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDBEB4F3-F90C-474A-855E-0EC6CE082B9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68756260-A443-46DC-82C9-BB988BD8BBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68756260-A443-46DC-82C9-BB988BD8BBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68756260-A443-46DC-82C9-BB988BD8BBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68756260-A443-46DC-82C9-BB988BD8BBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{567D4916-3C6A-4CC8-B52F-751D7101B568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567D4916-3C6A-4CC8-B52F-751D7101B568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567D4916-3C6A-4CC8-B52F-751D7101B568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567D4916-3C6A-4CC8-B52F-751D7101B568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

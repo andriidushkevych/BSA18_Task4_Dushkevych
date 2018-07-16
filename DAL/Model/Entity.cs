@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Model
 {
     public class Entity
     {
-        public Entity()
-        {
-            Id = Guid.NewGuid();
-        }
+        [Key]
         public Guid Id { get; set; }
     }
 }

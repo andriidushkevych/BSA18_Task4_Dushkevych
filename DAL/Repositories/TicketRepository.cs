@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using DAL.Model;
+﻿using DAL.Model;
+using DAL.DB;
 
 namespace DAL.Repositories
 {
     public class TicketRepository : Repository<Ticket>
     {
-        public override void Update(Guid id, Ticket entity)
+        public TicketRepository(AirportContext ctx): base(ctx)
         {
-            Ticket ticketToUpdate = data.Where(t => t.Id.Equals(id)).First();
-            ticketToUpdate.FlightNumber = entity.FlightNumber;
-            ticketToUpdate.Price = entity.Price;
+
         }
     }
 }

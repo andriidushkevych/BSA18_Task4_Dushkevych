@@ -2,34 +2,49 @@
 using System.Collections.Generic;
 using System.Text;
 using Shared.DTOs;
+using DAL;
+using DAL.Model;
+using DAL.Repositories;
+using AutoMapper;
 
 namespace BLL.Services
 {
-    public class TicketsService : IService
+    public class TicketService : IService<TicketDTO>
     {
-        public void Create(EntityDTO entity)
+        private IUnitOfWork _unitOfWork;
+        private readonly IRepository<Ticket> _repository;
+        private readonly IMapper _mapper;
+
+        public TicketService(IMapper mapper, IUnitOfWork unitOfWork) {
+
+            _unitOfWork = unitOfWork;
+            _repository = _unitOfWork.Tickets;
+            _mapper = mapper;
+        }
+
+        public void Create(TicketDTO entity)
         {
-            throw new NotImplementedException();
+            _repository.Create(_mapper.Map<TicketDTO, Ticket>(entity));
         }
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
-        public List<EntityDTO> FetchAll()
+        public List<TicketDTO> FetchAll()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<Ticket>, List<TicketDTO>>(_repository.FetchAll());
         }
 
-        public void Save()
+        public TicketDTO GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return  _mapper.Map<Ticket, TicketDTO>(_repository.GetById(id));
         }
 
-        public void Update(Guid entityId, EntityDTO newEntity)
+        public void Update(TicketDTO newEntity)
         {
-            throw new NotImplementedException();
+            _repository.Update(_mapper.Map<TicketDTO, Ticket>(newEntity));
         }
     }
 }

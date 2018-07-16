@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using DAL.Model;
+﻿using DAL.Model;
+using DAL.DB;
 
 namespace DAL.Repositories
 {
     public class DepartureRepository : Repository<Departure>
     {
-        public override void Update(Guid id, Departure entity)
+        public DepartureRepository(AirportContext ctx) : base(ctx)
         {
-            Departure departureToUpdate = data.Where(t => t.Id.Equals(id)).First();
-            departureToUpdate.FlightNumber = entity.FlightNumber;
-            departureToUpdate.Plane = entity.Plane;
-            departureToUpdate.DepartTimeAssigned = entity.DepartTimeAssigned;
-            departureToUpdate.DepartTimeActual = entity.DepartTimeActual;
-            departureToUpdate.Crew = entity.Crew;
+
         }
     }
 }

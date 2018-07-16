@@ -5,12 +5,12 @@ using Shared.DTOs;
 
 namespace BLL.Services
 {
-    interface IService
+    public interface IService<EntityDTO> where EntityDTO : class
     {
         List<EntityDTO> FetchAll();
+        EntityDTO GetById(Guid id);
         void Create(EntityDTO entity);
-        void Update(Guid entityId, EntityDTO newEntity);
+        void Update(EntityDTO newEntity);
         void Delete(Guid id);
-        void Save();
     }
 }

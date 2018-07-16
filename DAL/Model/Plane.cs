@@ -6,14 +6,14 @@ namespace DAL.Model
 {
     public class Plane : Entity
     {
-        public Plane(string name, PlaneType planeType, DateTime manufactureDate, DateTime lifeTimeDate)
-        {
-            Name = name;
-            PlaneType = planeType;
-            ManufactureDate = manufactureDate;
-            LifeTimeDate = lifeTimeDate;
-            Timespan = lifeTimeDate.Subtract(manufactureDate);
-        }
+        //public Plane(string name, PlaneType planeType, DateTime manufactureDate, DateTime lifeTimeDate)
+        //{
+        //    Name = name;
+        //    PlaneType = planeType;
+        //    ManufactureDate = manufactureDate;
+        //    LifeTimeDate = lifeTimeDate;
+        //    Timespan = lifeTimeDate.Subtract(manufactureDate);
+        //}
 
         public string Name { get; set; }
         public PlaneType PlaneType { get; set; }

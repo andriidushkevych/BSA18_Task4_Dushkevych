@@ -6,10 +6,10 @@ namespace DAL.Model
 {
     public class Stewardess : CrewMember
     {
-        public Stewardess(string fName, string lName)
-        {
-            FirstName = fName;
-            LastName = lName;
-        }
+        //public Stewardess(string fName, string lName)
+        //{
+        //    FirstName = fName;
+        //    LastName = lName;
+        //}
     }
 }
